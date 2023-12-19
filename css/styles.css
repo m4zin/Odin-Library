@@ -66,8 +66,18 @@ body {
 
 .header-main main .center-books .book {
     width: 400px;
-    height: 300px;
+    height: 200px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-main main .center-books .book .read-and-delete {
+    display: flex;
+    gap: 30px;
 }
 
 /* CSS */
