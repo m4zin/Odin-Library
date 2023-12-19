@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/scripts/index.js" defer></script>
+</head>
+
+<body>
+    <div class="header-main">
+        <!-- Header and main -->
+        <header>
+            <div class="header-text">
+                <h1>Library.</h1>
+                <h3>Add | Remove | Customize, Your Readings.</h3>
+                <br>
+                <button class="add-reading">Click me to add a reading</button>
+            </div>
+        </header>
+        <main>
+            <div class="center-books">
+            </div>
+        </main>
+    </div>
+    <!-- Form pop up -->
+    <form class="form-popup">
+        <div class="input-text">
+            <label for="author_name">Author's Name (*)</label>
+            <input type="text" name="author_name" id="author" required>
+        </div>
+        <div class="input-text">
+            <label for="reading_name">Book (*)</label>
+            <input type="text" name="reading_name" id="reading" required>
+        </div>
+        <div class="input-text">
+            <label for="num_pages">Number of pages (*)</label>
+            <input type="number" name="num_pages" id="numOfPages" required>  
+        </div>
+        <div class="input-checkbox">
+            <input type="checkbox" name="check_box" id="checkbox">
+            <label for="check_box">Read</label>
+        </div>
+        <button type="submit" class="reading-submit">Add</button>
+    </form>
+</body>
+
+</html>
