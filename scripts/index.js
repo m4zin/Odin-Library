@@ -1,37 +1,25 @@
 function book(bookName, author, numOfPages, isRead) {
+
   this.bookName = bookName;
   this.author = author;
   this.numOfPages = numOfPages;
   this.isRead = isRead;
+
 }
 
-let addReadingBtn = document.querySelector(".add-reading");
-let form = document.querySelector(".form-popup");
-let formButton = document.querySelector(".reading-submit");
-let wholePage = document.querySelector(".header-main");
+function showFormOnly() {
 
-// Form field values.
-let authorName = document.getElementById("author");
-let bookName = document.getElementById("reading");
-let numOfPages = document.getElementById("numOfPages");
-let checkbox = document.getElementById("checkbox")
-
-// Declaring isRead boolean for checkbox in form.
-let isRead = false
-
-// Where we will be appending our new books
-let centerBooks = document.querySelector('.center-books')
-
-// When add a book button is pressed.
-addReadingBtn.addEventListener("click", function () {
 	// First make the form pop up and clear the rest of the page.
 	form.style.display = "flex";
 	wholePage.style.display = "none";
 	wholePage.style.opacity = 0.5;
-});
 
-// When form button is pressed.
-formButton.addEventListener("click", () => {
+}
+
+function addBook() {
+
+	// Declaring isRead boolean for checkbox in form.
+	let isRead = false
 
 	// If any of the fields are empty.
 	if(authorName.value == '')
@@ -83,6 +71,7 @@ formButton.addEventListener("click", () => {
 			let authNameInDom = document.createElement('h3')
 			let numOfPagesInDom = document.createElement('h4')
 
+			// Div that contains our label and checkbox for read/notRead.
 			let bookReadCheckboxInDom = document.createElement('div')
 			bookReadCheckboxInDom.className = 'book-read-checkbox'
 			let inputCheckboxInDom = document.createElement('input')
@@ -93,15 +82,12 @@ formButton.addEventListener("click", () => {
 			bookReadCheckboxInDom.append(inputCheckboxInDom)
 			bookReadCheckboxInDom.append(labelInDom)
 
+			// Delete button on the book.
 			let delBtnInDom = document.createElement('button')
 			delBtnInDom.className = 'book-del-btn'
 			delBtnInDom.innerHTML = 'Delete'
 
-			bookChild.append(bookNameInDom)
-			bookChild.append(authNameInDom)
-			bookChild.append(numOfPagesInDom)
-			bookChild.append(bookReadCheckboxInDom)
-			bookChild.append(delBtnInDom)
+			bookChild.append(bookNameInDom, authNameInDom, numOfPagesInDom, bookReadCheckboxInDom, delBtnInDom)
 
 			// When delete button pressed, it's parent div or the book is removed from dom.
 			delBtnInDom.addEventListener('click', (e) => {
@@ -124,7 +110,27 @@ formButton.addEventListener("click", () => {
 			})
 		}
 	}
-
 	// Clearing object after addition of new book in dom.
 	newBook = null;
-});
+
+}
+
+let addReadingBtn = document.querySelector(".add-reading");
+let form = document.querySelector(".form-popup");
+let formButton = document.querySelector(".reading-submit");
+let wholePage = document.querySelector(".header-main");
+
+// Form field values.
+let authorName = document.getElementById("author");
+let bookName = document.getElementById("reading");
+let numOfPages = document.getElementById("numOfPages");
+let checkbox = document.getElementById("checkbox")
+
+// Where we will be appending our new books
+let centerBooks = document.querySelector('.center-books')
+
+// When add a book button is pressed.
+addReadingBtn.addEventListener("click", showFormOnly);
+
+// When form button is pressed.
+formButton.addEventListener("click", addBook);
