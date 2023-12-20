@@ -30,6 +30,7 @@ body {
 
 .header-main header {
     display: flex;
+    min-width: 50%;
     background-color: #ececec;
     justify-content: space-around;
     align-items: center;
@@ -54,19 +55,19 @@ body {
 
 .header-main main .center-books {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     justify-items: center;
     align-items: center;
     gap: 20px;
     height: 100%;
-    width: 75%;
+    width: 100%;
     padding: 25px;
 }
 
 .header-main main .center-books .book {
     width: 400px;
-    height: 200px;
+    height: 250px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
@@ -75,9 +76,13 @@ body {
     gap: 20px;
 }
 
-.header-main main .center-books .book .read-and-delete {
+.header-main main .center-books .book .book-read-checkbox {
     display: flex;
-    gap: 30px;
+    gap: 10px;
+}
+
+.header-main main .center-books .book .book-read-checkbox label {
+    vertical-align: middle;
 }
 
 /* CSS */
@@ -163,7 +168,8 @@ body {
 }
 
 /* Checkbox decorations. */
-.form-popup .input-checkbox input {
+.form-popup .input-checkbox input,
+.header-main main .center-books .book .book-read-checkbox input {
     appearance: none;
     background-color: red;
     border-radius: 72px;
@@ -176,11 +182,14 @@ body {
 }
 
 .form-popup .input-checkbox input,
-.form-popup .input-checkbox input::after {
+.form-popup .input-checkbox input::after,
+.header-main main .center-books .book .book-read-checkbox input,
+.header-main main .center-books .book .book-read-checkbox input::after {
     transition: all 100ms ease-out;
 }
 
-.form-popup .input-checkbox input::after {
+.form-popup .input-checkbox input::after,
+.header-main main .center-books .book .book-read-checkbox input::after {
     background-color: #fff;
     border-radius: 50%;
     content: "";
@@ -191,20 +200,24 @@ body {
     width: 14px;
 }
 
-.form-popup .input-checkbox input[type=checkbox] {
+.form-popup .input-checkbox input[type=checkbox],
+.header-main main .center-books .book .book-read-checkbox input[type=checkbox] {
     cursor: default;
 }
 
-.form-popup .input-checkbox input:checked {
+.form-popup .input-checkbox input:checked,
+.header-main main .center-books .book .book-read-checkbox input:checked {
     background-color: green;
 }
 
-.form-popup .input-checkbox input:checked::after {
+.form-popup .input-checkbox input:checked::after,
+.header-main main .center-books .book .book-read-checkbox input:checked::after {
     background-color: #fff;
     left: 32px;
 }
 
-.form-popup button {
+/* Form button */
+.form-popup input[type=button] {
     height: 30px;
     width: 100px;
     border: none;
@@ -213,13 +226,52 @@ body {
     font-weight: bold;
 }
 
-.form-popup button:hover {
+.form-popup input[type=button]:hover {
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
 
-.form-popup button:active {
+.form-popup input[type=button]:active {
     transform: scale(0.95);
 }
+
+
+/* Delete button */
+.header-main main .center-books .book .book-del-btn {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.header-main main .center-books .book .book-del-btn:hover,
+.header-main main .center-books .book .book-del-btn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.header-main main .center-books .book .book-del-btn:active {
+  opacity: .5;
+}
+
 
 
 
