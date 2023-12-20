@@ -87,31 +87,17 @@ body {
 
 /* CSS */
 .header-main header .header-text .add-reading {
-  align-items: center;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
-  box-sizing: border-box;
   color: #121212;
   cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
   padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
   transition: box-shadow .2s,-webkit-box-shadow .2s;
   white-space: nowrap;
   border: 0;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
 }
 
 .header-main header .header-text .add-reading:hover {
@@ -241,35 +227,20 @@ body {
   border: 1px solid #FF4742;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-  box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
-  display: inline-block;
-  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
   font-size: 16px;
   font-weight: 800;
-  line-height: 16px;
   min-height: 40px;
-  outline: 0;
   padding: 12px 14px;
   text-align: center;
-  text-rendering: geometricprecision;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   vertical-align: middle;
 }
 
 .header-main main .center-books .book .book-del-btn:hover,
 .header-main main .center-books .book .book-del-btn:active {
   background-color: initial;
-  background-position: 0 0;
   color: #FF4742;
-}
-
-.header-main main .center-books .book .book-del-btn:active {
-  opacity: .5;
 }
 
 
