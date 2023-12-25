@@ -1,118 +1,111 @@
-function book(bookName, author, numOfPages, isRead) {
+class book {
+  constructor(bookName, author, numOfPages, isRead) {
+    this.bookName = bookName
+    this.author = author
+    this.numOfPages = numOfPages
+    this.isRead = isRead
+  }
 
-  this.bookName = bookName;
-  this.author = author;
-  this.numOfPages = numOfPages;
-  this.isRead = isRead;
+  getBookName() {
+    console.log(`this is the book name, ${this.bookName}`)
+  }
 
 }
 
 function showFormOnly() {
-
-	// First make the form pop up and clear the rest of the page.
-	form.style.display = "flex";
-	wholePage.style.display = "none";
-	wholePage.style.opacity = 0.5;
-
+  // First make the form pop up and clear the rest of the page.
+  form.style.display = "flex";
+  wholePage.style.display = "none";
+  wholePage.style.opacity = 0.5;
 }
 
 function addBook() {
+  // Declaring isRead boolean for checkbox in form.
+  let isRead = false;
 
-	// Declaring isRead boolean for checkbox in form.
-	let isRead = false
+  // If any of the fields are empty.
+  if (authorName.value == "") {
+    authorName.value = "Empty";
+  }
+  if (bookName.value == "") {
+    bookName.value = "Empty";
+  }
+  if (numOfPages.value == "") {
+    numOfPages.value = 0;
+  }
 
-	// If any of the fields are empty.
-	if(authorName.value == '')
-	{
-		authorName.value = 'Empty'
-	} 
-	if(bookName.value == '') {
-		bookName.value = 'Empty'
-	}
-	if(numOfPages.value == '') {
-		numOfPages.value = 0
-	}
+  if(checkbox.checked == true ? isRead = true : false);
 
-	// Checking whether checkbox true/false.
-	if(checkbox.checked) {
-		isRead = true
-	} else {
-		isRead = false;
-	}
+  // Getting rid of form after submission and displaying previous page again.
+  wholePage.style.display = "grid";
+  wholePage.style.opacity = null;
+  form.style.display = "none";
 
-	// Getting rid of form after submission and displaying previous page again.
-	wholePage.style.display = "grid";
-	wholePage.style.opacity = null;
-	form.style.display = "none";
+  let newBook = new book(bookName.value, authorName.value, numOfPages.value, isRead)
+  console.log(newBook.bookName)
 
-	// Creating new object with form values.
-	let newBook = new book(
-		bookName.value, 
-		authorName.value,
-		numOfPages.value,
-		isRead
-	);
+	// List to store our books.
+  listOfBooks = [];
 
-	listOfBooks = []
+	// Pushing a new book into the list.
+  listOfBooks.push(newBook);
 
-	listOfBooks.push(newBook)
+  for (let i = 0; i < listOfBooks.length; i++) {
+    if (i == listOfBooks.length - 1) {
+      let bookChild = document.createElement("div");
+      bookChild.className = "book";
 
-	for(let i = 0; i < listOfBooks.length; i++)
-	{
-		if(i == (listOfBooks.length - 1))
-		{
-			let bookChild = document.createElement('div')
-			bookChild.className = 'book'
+      // Appending bookchild to parent element.
+      centerBooks.append(bookChild);
 
-			// Appending bookchild to parent element.
-			centerBooks.append(bookChild)
+      let bookNameInDom = document.createElement("h2");
+      let authNameInDom = document.createElement("h3");
+      let numOfPagesInDom = document.createElement("h4");
 
-			let bookNameInDom = document.createElement('h2')
-			let authNameInDom = document.createElement('h3')
-			let numOfPagesInDom = document.createElement('h4')
+      // Div that contains our label and checkbox for read/notRead.
+      let bookReadCheckboxInDom = document.createElement("div");
+      bookReadCheckboxInDom.className = "book-read-checkbox";
 
-			// Div that contains our label and checkbox for read/notRead.
-			let bookReadCheckboxInDom = document.createElement('div')
-			bookReadCheckboxInDom.className = 'book-read-checkbox'
-			let inputCheckboxInDom = document.createElement('input')
-			inputCheckboxInDom.setAttribute("type", "checkbox")
-			let labelInDom = document.createElement('label')
-			labelInDom.innerHTML = 'Read'
+      let inputCheckboxInDom = document.createElement("input");
+      inputCheckboxInDom.setAttribute("type", "checkbox");
 
-			bookReadCheckboxInDom.append(inputCheckboxInDom)
-			bookReadCheckboxInDom.append(labelInDom)
+      let labelInDom = document.createElement("label");
+      labelInDom.innerHTML = "Read";
 
-			// Delete button on the book.
-			let delBtnInDom = document.createElement('button')
-			delBtnInDom.className = 'book-del-btn'
-			delBtnInDom.innerHTML = 'Delete'
+      bookReadCheckboxInDom.append(inputCheckboxInDom, labelInDom);
 
-			bookChild.append(bookNameInDom, authNameInDom, numOfPagesInDom, bookReadCheckboxInDom, delBtnInDom)
+      // Delete button on the book.
+      let delBtnInDom = document.createElement("button");
+      delBtnInDom.className = "book-del-btn";
+      delBtnInDom.innerHTML = "Delete";
 
-			// When delete button pressed, it's parent div or the book is removed from dom.
-			delBtnInDom.addEventListener('click', (e) => {
-				const parentElem = e.target.parentElement
-				parentElem.remove();
-			})
+      bookChild.append(
+        bookNameInDom,
+        authNameInDom,
+        numOfPagesInDom,
+        bookReadCheckboxInDom,
+        delBtnInDom
+      );
 
-			listOfBooks.forEach(reading => {
-				bookNameInDom.innerHTML = `Book: ${reading.bookName}`
-				authNameInDom.innerHTML = `Author: ${reading.author}`
-				numOfPagesInDom.innerHTML = `Page Count: ${reading.numOfPages}`
+      // When delete button pressed, it's parent div or the book is removed from dom.
+      delBtnInDom.addEventListener("click", (e) => {
+        const parentElem = e.target.parentElement;
+        parentElem.remove();
+      });
 
-				if(reading.isRead == true)
-				{
-					inputCheckboxInDom.checked = true;
-				}
-				else {
-					inputCheckboxInDom.checked = false;
-				}
-			})
-		}
-	}
-	// Clearing object after addition of new book in dom.
-	newBook = null;
+      listOfBooks.forEach((reading) => {
+        bookNameInDom.innerHTML = `Book: ${reading.bookName}`;
+        authNameInDom.innerHTML = `Author: ${reading.author}`;
+        numOfPagesInDom.innerHTML = `Page Count: ${reading.numOfPages}`;
 
+        if (
+          reading.isRead == true ? (inputCheckboxInDom.checked = true) : false
+        );
+      });
+    }
+  }
+  // Clearing object after addition of new book in dom.
+  newBook = null;
 }
 
 let addReadingBtn = document.querySelector(".add-reading");
@@ -124,10 +117,10 @@ let wholePage = document.querySelector(".header-main");
 let authorName = document.getElementById("author");
 let bookName = document.getElementById("reading");
 let numOfPages = document.getElementById("numOfPages");
-let checkbox = document.getElementById("checkbox")
+let checkbox = document.getElementById("checkbox");
 
 // Where we will be appending our new books
-let centerBooks = document.querySelector('.center-books')
+let centerBooks = document.querySelector(".center-books");
 
 // When add a book button is pressed.
 addReadingBtn.addEventListener("click", showFormOnly);
