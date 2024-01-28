@@ -207,7 +207,7 @@ body {
 }
 
 /* Form button */
-.form-popup input[type=button] {
+.form-popup button {
     height: 30px;
     width: 100px;
     border: none;
@@ -216,11 +216,11 @@ body {
     font-weight: bold;
 }
 
-.form-popup input[type=button]:hover {
+.form-popup button:hover {
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
 
-.form-popup input[type=button]:active {
+.form-popup button:active {
     transform: scale(0.95);
 }
 
